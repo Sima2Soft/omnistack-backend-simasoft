@@ -18,7 +18,7 @@ const File = new mongoose.Schema({
 
 //Um campo virtual, é aquele campo que não existe no Banco, mas existe na aplicação
 File.virtual('url').get(function() {
-    const url = process.url.URL || 'http:/localhost:3333';
+    const url = process.env.URL || 'http:/localhost:3333';
     return `${url}/files/${encodeURIComponent(this.path)}`;
 });
 
